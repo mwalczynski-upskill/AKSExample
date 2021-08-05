@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  aksexample.api:
+    image: azureaksexample.azurecr.io/aksexampleapi
+    build:
+      context: .
+      dockerfile: AKSExample.Api/Dockerfile
+
+  aksexample.client:
+    image: azureaksexample.azurecr.io/aksexampleclient
+    build:
+      context: .
+      dockerfile: AKSExample.Client/Dockerfile
+    depends_on:
+       - "aksexample.api"
+

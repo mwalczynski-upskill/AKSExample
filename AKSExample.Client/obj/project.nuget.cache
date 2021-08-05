@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "M/LrrH99TBWtkKXsxzi6r8BV8vNpFM/gZb1dOh3mgEHFcO/dUMsOnwqZKMmUnNEgaTmXbSAn19YRdVY+EzDRVw==",
+  "success": true,
+  "projectFilePath": "D:\\Projects\\AKSExample\\AKSExample.Client\\AKSExample.Client.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Michal\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
+    "C:\\Users\\Michal\\.nuget\\packages\\microsoft.visualstudio.azure.kubernetes.tools.targets\\1.1.0\\microsoft.visualstudio.azure.kubernetes.tools.targets.1.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

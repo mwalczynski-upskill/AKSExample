@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aksexampleapi
+spec:
+  selector:
+    matchLabels:
+      app: aksexampleapi
+  template:
+    metadata:
+      labels:
+        app: aksexampleapi
+    spec:
+      containers:
+      - name: aksexampleapi
+        image: azureaksexample.azurecr.io/aksexampleapi
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aksexampleapi
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: aksexampleapi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aksexampleclient
+spec:
+  selector:
+    matchLabels:
+      app: aksexampleclient
+  template:
+    metadata:
+      labels:
+        app: aksexampleclient
+    spec:
+      containers:
+      - name: aksexampleclient
+        image: azureaksexample.azurecr.io/aksexampleclient
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        env:
+            - name: ApiUri
+              value: $(AKSEXAMPLEAPI_SERVICE_HOST)
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aksexampleclient
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: aksexampleclient
+    
